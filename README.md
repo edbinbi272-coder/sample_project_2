@@ -82,3 +82,4 @@ Remove-Item Env:READERS_PARADISE_LIVE_TESTS
 
 Passwords are hashed with Argon2 before storage. API access tokens are signed JWTs. The API validates ownership before editing or removing a review, and database unique constraints prevent duplicate wishlist entries and duplicate reviews by the same user for a book. The development server creates missing tables with SQLAlchemy; use Alembic migrations before making schema changes in a deployed application.
 "# DEMO" 
+"# sample_project_2" 
