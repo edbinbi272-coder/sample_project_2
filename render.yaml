@@ -19,7 +19,7 @@ services:
       - key: ACCESS_TOKEN_EXPIRE_MINUTES
         value: "60"
       - key: FRONTEND_ORIGINS
-        value: https://readers-paradise-web.onrender.com
+        value: https://sample-project-2-1-6161.onrender.com,https://readers-paradise-web.onrender.com
 
   - type: web
     name: readers-paradise-web
