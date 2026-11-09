@@ -16,6 +16,7 @@ frontend/.env
 # Node and build output
 node_modules/
 dist/
+backend/readers_paradise.db
 
 # Operating-system files
 .DS_Store

@@ -7,21 +7,14 @@ Readers Paradise is a local book discovery and review application. The frontend 
 - VS Code
 - Python 3.11 or newer
 - Node.js 20 or newer (npm is included with Node.js)
-- PostgreSQL 18 running on your computer
 
-The backend uses the connection settings requested for this project. Keep the backend `.env` file private; it is ignored by Git.
+The backend uses a local SQLite database by default, so you can run the app without installing a database server. Keep the backend `.env` file private; it is ignored by Git.
 
-## 1. Prepare PostgreSQL
+## 1. Prepare the local database
 
-Install PostgreSQL 18 if it is not already installed, and make sure its server is running on port `5432`. Open the PostgreSQL SQL Shell (`psql`) or pgAdmin and create the project database:
+The local connection settings are in `backend/.env`. The default `sqlite:///./readers_paradise.db` stores data in `backend/readers_paradise.db`; the API creates its tables on first start. You can use PostgreSQL instead by setting `DATABASE_URL` to your local PostgreSQL connection string. Do not put database credentials in frontend files.
 
-```sql
-CREATE DATABASE sample_project_2;
-```
-
-The local connection settings are in `backend/.env`. The API creates its tables the first time it starts. If your PostgreSQL password differs, update `DATABASE_URL` in that file. Do not put database credentials in frontend files.
-
-For a fresh checkout where `backend/.env` is missing, copy `backend/.env.example` to `backend/.env`, then set the database password and a private random `SECRET_KEY` before starting the API.
+For a fresh checkout where `backend/.env` is missing, copy `backend/.env.example` to `backend/.env`, then set a private random `SECRET_KEY` before starting the API.
 
 ## 2. Start the FastAPI backend
 

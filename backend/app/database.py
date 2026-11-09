@@ -12,7 +12,13 @@ class Base(DeclarativeBase):
     """Base class inherited by every database model."""
 
 
-engine = create_engine(settings.database_url, pool_pre_ping=True)
+engine_options = {"pool_pre_ping": True}
+if settings.database_url.startswith("sqlite"):
+    # FastAPI runs synchronous database work in worker threads. SQLite connections
+    # need this option when a request can use a connection from another thread.
+    engine_options["connect_args"] = {"check_same_thread": False}
+
+engine = create_engine(settings.database_url, **engine_options)
 SessionLocal = sessionmaker(bind=engine, autoflush=False, expire_on_commit=False)
 
 
